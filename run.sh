@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SESSION="rocketcam"
+SESSION="videocap"
 
 # Create a unique filename for this run
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
@@ -10,7 +10,7 @@ OUTPUT_MP4="$BASENAME.mp4"
 
 tmux has-session -t $SESSION 2>/dev/null
 if [ $? != 0 ]; then
-    tmux new-session -d -s $SESSION "bash record_video.sh $OUTPUT_H264 $OUTPUT_MP4"
+    tmux new-session -d -s $SESSION "bash record_inner.sh $OUTPUT_H264 $OUTPUT_MP4"
     echo "Recording started in tmux session '$SESSION'."
 else
     echo "Session '$SESSION' already exists."

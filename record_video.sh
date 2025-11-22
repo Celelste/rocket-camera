@@ -14,7 +14,7 @@ while true; do
         kill $PID
         wait $PID 2>/dev/null
         echo "Converting to MP4..."
-        MP4Box -add "$OUTPUT_H264" "$OUTPUT_MP4" >/dev/null 2>&1
+        ffmpeg -y -framerate 30 -i "$OUTPUT_H264" -c copy "$OUTPUT_MP4" >/dev/null 2>&1
         echo "MP4 saved as $OUTPUT_MP4"
         break
     fi
